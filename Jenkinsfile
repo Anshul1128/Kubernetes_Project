@@ -1,11 +1,6 @@
 pipeline{
     agent any
 
-    environment {
-        ANSIBLE_SERVER = '13.126.18.139'
-        ANSIBLE_USER = 'ubuntu'
-        // ANSIBLE_SSH_KEY = credentials('ansible_demo')
-    }
 
     stages{
         stage("Cleanup Workspace"){
@@ -24,7 +19,8 @@ pipeline{
         stage('Copy File to Ansible Server') {
             steps {
                 sshagent(['ansible_demo']) {
-                    sh "scp ${WORKSPACE}/var/lib/jenkins/workspace/K8s/* ${ANSIBLE_USER}@${ANSIBLE_SERVER}:/home/ubuntu"
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu@13.126.18.139'
+                    sh "scp /var/lib/jenkins/workspace/K8s/* ubuntu@13.126.18.139:/home/ubuntu"
                 }       
             }
         }
