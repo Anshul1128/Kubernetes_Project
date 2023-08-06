@@ -20,7 +20,7 @@ pipeline{
             steps {
                 sshagent(['ansible_demo']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l ubuntu@13.126.18.139'
-                    sh "scp /var/lib/jenkins/workspace/K8s/* ubuntu@13.126.18.139:/home/ubuntu"
+                    sh "scp /var/lib/jenkins/workspace/K8s/Dockerfile ubuntu@13.126.18.139:/home/ubuntu"
                 }       
             }
         }
