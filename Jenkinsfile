@@ -16,6 +16,11 @@ pipeline{
             }
 
         }
+        stage('Copy File to Ansible Server') {
+            steps {
+                sh "scp /var/lib/jenkins/workspace/K8s/* ubuntu@$13.126.18.139:/home/ubuntu"
+            }
+        }
 
     }
 }
@@ -26,7 +31,7 @@ pipeline{
 //     agent any
     
 //     environment {
-//         ANSIBLE_SERVER = '13.126.18.139'
+//         ANSIBLE_SERVER = ''
 //         ANSIBLE_USER = 'ubuntu'
 //         ANSIBLE_SSH_KEY = credentials('ansible')
 //     }
@@ -39,7 +44,7 @@ pipeline{
         
 //         stage('Copy File to Ansible Server') {
 //             steps {
-//                 sh "scp -i $ANSIBLE_SSH_KEY ${WORKSPACE}/var/lib/jenkins/workspace/K8s/* ${ANSIBLE_USER}@${ANSIBLE_SERVER}:/home/ubuntu"
+                // sh "scp -i 13.126.18.139 ${WORKSPACE}/var/lib/jenkins/workspace/K8s/* ubuntu@$13.126.18.139:/home/ubuntu"
 //             }
 //         }
 //     }
