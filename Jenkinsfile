@@ -4,7 +4,7 @@ pipeline{
     environment {
         ANSIBLE_SERVER = '13.126.18.139'
         ANSIBLE_USER = 'ubuntu'
-        ANSIBLE_SSH_KEY = credentials('ansible_demo')
+        // ANSIBLE_SSH_KEY = credentials('ansible_demo')
     }
 
     stages{
@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Copy File to Ansible Server') {
             steps {
-                sh "scp -i $ANSIBLE_SSH_KEY ${WORKSPACE}/var/lib/jenkins/workspace/K8s/* ${ANSIBLE_USER}@${ANSIBLE_SERVER}:/home/ubuntu"
+                sh "scp ${WORKSPACE}/var/lib/jenkins/workspace/K8s/* ${ANSIBLE_USER}@${ANSIBLE_SERVER}:/home/ubuntu"
                        
             }
         }
@@ -80,6 +80,25 @@ pipeline{
 // }
 
 
+// pipeline {
+//     agent any
+//     stages {
+//         stage('Copy File to Ansible Server') {
+//             steps {
+//                 script {
+//                     // Replace these variables with your actual values
+//                     def ansibleServer = 'ansible-server-ip'
+//                     def ansibleUser = 'ansible-user'
+//                     def sourceFile = 'path/to/source/file.txt'
+//                     def destinationDir = 'path/to/destination/'
+
+//                     // Execute the SCP command to copy the file to the Ansible server
+//                     sh "scp -o StrictHostKeyChecking=no ${sourceFile} ${ansibleUser}@${ansibleServer}:${destinationDir}"
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 
