@@ -30,7 +30,7 @@ pipeline{
                 sshagent(['ansible_demo']) {
                     // this line is very imp otherwise it will give error of private key issue. Recommended for automates task only.
                     sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 13.234.225.215 cd /home/ubuntu/'
-                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 13.234.225.215 docker build -t $JOB_NAME:v1.$BUILD_ID .'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 13.234.225.215 docker image build -t $JOB_NAME:v1.$BUILD_ID .'
                 }       
             }
         }
