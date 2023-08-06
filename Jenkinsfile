@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Copy File to Ansible Server') {
             steps {
-                sh "scp /var/lib/jenkins/workspace/K8s/* ubuntu@$13.126.18.139:/home/ubuntu"
+                sh "scp /var/lib/jenkins/workspace/K8s/* ubuntu@13.126.18.139:/home/ubuntu"
             }
         }
 
