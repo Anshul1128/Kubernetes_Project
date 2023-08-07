@@ -19,7 +19,7 @@ pipeline{
         stage('Copy File to Ansible Server') {
             steps {
                 sshagent(['ansible_demo']) {
-                    // This line is very important otherwise it will give error of 'private key' issue.
+                    // This line is very important, else it will give error of 'private key' issue.
                     sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 35.154.152.92 uname -a'
                     sh "scp /var/lib/jenkins/workspace/K8s/Dockerfile ubuntu@35.154.152.92:/home/ubuntu"
                 }       
