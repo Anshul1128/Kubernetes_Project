@@ -19,7 +19,7 @@ pipeline{
         stage('Copy File to Ansible Server') {
             steps {
                 sshagent(['ansible_demo']) {
-                    // This libne is very imp otherwise it will give error of private key issue.
+                    // This line is very imp otherwise it will give error of private key issue.
                     sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 13.234.225.215 uname -a'
                     sh "scp /var/lib/jenkins/workspace/K8s/Dockerfile ubuntu@13.234.225.215:/home/ubuntu"
                 }       
