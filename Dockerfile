@@ -12,7 +12,7 @@
 
 
 FROM  centos:latest
-RUN yum install -y httpd \
+RUN sudo yum install -y httpd \
  zip\
  unzip
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page265/shine.zip /var/www/html/
