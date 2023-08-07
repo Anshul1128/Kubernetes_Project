@@ -24,7 +24,7 @@ pipeline{
                 sshagent(['ansible_demo']) {
                     // This line is very important, else it will give error of 'private key' issue.
                     sh 'ssh -o StrictHostKeyChecking=no -l ubuntu ${ANSIBLE_SERVER} uname -a'
-                    sh "scp /var/lib/jenkins/workspace/K8s/Dockerfile ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"               
+                    sh "scp /var/lib/jenkins/workspace/k8s/Dockerfile ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"               
                 }
             }       
         }
